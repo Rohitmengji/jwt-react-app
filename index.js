@@ -49,6 +49,7 @@ app.post("/api/auth/signup", (req, res) => {
   res.status(201).json({ message: "Signup successful" });
 });
 
+// Login route
 app.post("/api/auth/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -69,7 +70,6 @@ app.post("/api/auth/login", (req, res) => {
   // Return the token to the client
   res.json({ token });
 });
-
 
 // Profile route
 app.get("/profile", verifyToken, (req, res) => {
@@ -107,6 +107,7 @@ function verifyToken(req, res, next) {
     next(); // Call the next middleware
   });
 }
+
 
 // Start the server
 app.listen(3001, () => {
